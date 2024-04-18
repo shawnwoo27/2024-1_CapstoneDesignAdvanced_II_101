@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스마트 상추 관리 시스템 - 일간 사진첩</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+        .gallery {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            overflow-y: auto; /* Allows scrolling if content is too much */
+        }
+        .date-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .date-block:hover {
+            transform: scale(1.05);
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>스마트 상추 관리 시스템 - 일간 사진첩</h1>
+    </div>
+    <div class="gallery">
+        <!-- 아래 부분은 예시로, 실제로는 서버에서 날짜/이미지 데이터를 가져와야함. -->
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-01</h3>
+            <img src="lettuce-2023-04-01.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-02</h3>
+            <img src="lettuce-2023-04-02.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-03</h3>
+            <img src="lettuce-2023-04-03.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-04</h3>
+            <img src="lettuce-2023-04-04.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-05</h3>
+            <img src="lettuce-2023-04-05.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-06</h3>
+            <img src="lettuce-2023-04-06.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-07</h3>
+            <img src="lettuce-2023-04-07.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-08</h3>
+            <img src="lettuce-2023-04-08.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-09</h3>
+            <img src="lettuce-2023-04-09.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-10</h3>
+            <img src="lettuce-2023-04-10.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-11</h3>
+            <img src="lettuce-2023-04-11.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-12</h3>
+            <img src="lettuce-2023-04-12.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-13</h3>
+            <img src="lettuce-2023-04-13.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-14</h3>
+            <img src="lettuce-2023-04-14.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-15</h3>
+            <img src="lettuce-2023-04-15.jpg" alt="상추 사진">
+        </div>
+        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+            <h3>2023-04-16</h3>
+            <img src="lettuce-2023-04-16.jpg" alt="상추 사진">
+        </div>
+    </div>
+    <div class="footer">
+        <button class="back-button" onclick="window.history.back();">뒤로 가기</button>
+    </div>
+</body>
+</html>

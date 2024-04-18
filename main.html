@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스마트 상추 관리 시스템</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            height: calc(100% - 50px); /* Adjust height, considering header */
+        }
+        .left, .right {
+            width: 50%;
+            height: 100%;
+            overflow-y: auto; /* Adds scroll if content overflows */
+        }
+        .right {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .left {
+            background-color: #ddd;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .data-field {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>스마트 상추 관리 시스템</h1>
+    </div>
+    <div class="content">
+        <div class="left">
+            <!-- 상추 이미지를 여기에 표시 -->
+            <img src="lettuce.jpg" alt="상추 이미지" style="width:100%; height: auto;">
+        </div>
+        <div class="right">
+            <h2>실시간 상추 상태 정보</h2>
+            <div class="data-field">
+                <strong>온도:</strong> <span id="temperature">24°C</span>
+            </div>
+            <div class="data-field">
+                <strong>조도:</strong> <span id="light">1500 lux</span>
+            </div>
+            <div class="data-field">
+                <strong>습도:</strong> <span id="humidity">60%</span>
+            </div>
+            <div class="data-field">
+                <strong>수위:</strong> <span id="waterLevel">30 cm</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 이 부분에는 AJAX 호출이나 WebSocket 연결을 통해 데이터를 실시간으로 업데이트하는 코드를 추가할 수 있습니다.
+        // '수확 알림' 창 구현 예시
+        function checkLettuceSize() {
+            var lettuceSize = 400; // 서버에서 상추 사이즈 전달해줘야함
+
+            // 너비가 500픽셀을 초과할 경우 경고
+            if (lettuceSize > 500) {
+                alert('상추가 수확 크기에 도달했습니다! 수확을 고려하세요.');
+            }
+        }
+    </script>
+</body>
+</html>

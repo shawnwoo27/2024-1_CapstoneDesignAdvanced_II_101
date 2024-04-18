@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스마트 상추 관리 시스템 - 이미지 확대</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+        .image-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 20px;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">스마트 상추 관리 시스템</div>
+    <div class="image-container">
+        <img src="lettuce.jpg" alt="확대된 상추 이미지">
+    </div>
+    <div class="footer">
+        <button class="back-button" onclick="window.history.back();">원래 화면으로 돌아가기</button>
+    </div>
+</body>
+</html>
