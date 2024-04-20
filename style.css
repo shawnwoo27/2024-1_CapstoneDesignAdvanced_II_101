@@ -1,0 +1,57 @@
+/* 기본 스타일 */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+.header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-family: 'Roboto', sans-serif;
+}
+.content, .gallery, .footer {
+    padding: 20px;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+.back-button, .date-block {
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.back-button:hover, .date-block:hover {
+    background-color: #e6b800;
+}
+/* 테이블 및 그리드 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.date-block {
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.right {
+    background-color: #ffffff;
+    overflow-y: auto;
+}
