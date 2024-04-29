@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>스마트 상추 관리 시스템</title>
+    <title>명지 키움</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         body, html {
@@ -40,16 +40,36 @@
         .data-field {
             margin-bottom: 20px;
         }
+        .footer {
+            position: fixed; /* footer를 화면 하단에 고정 */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
+        }
+        .photo-album-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>스마트 상추 관리 시스템</h1>
+        <h1>명지 키움</h1>
     </div>
     <div class="content">
         <div class="left">
             <!-- 상추 이미지를 여기에 표시 -->
-            <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="상추 이미지" style="width:100%; height: auto;">
+            <a href="camCheck.html  ">
+                <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="상추 이미지" style="width:100%; height: auto;">
+            </a>
         </div>
         <div class="right">
             <h2>실시간 상추 상태 정보</h2>
@@ -67,11 +87,15 @@
             </div>
         </div>
     </div>
+    <div class="footer">
+        <!-- 일간 사진첩 페이지로 이동하는 버튼 -->
+        <button class="photo-album-button" onclick="window.location.href='DailyPhoto.html';">일간 사진첩</button>
+    </div>
     <script>
         // 이 부분에는 AJAX 호출이나 WebSocket 연결을 통해 데이터를 실시간으로 업데이트하는 코드를 추가할 수 있습니다.
         // '수확 알림' 창 구현 예시
         function checkLettuceSize() {
-            var lettuceSize = 600; // 서버에서 상추 사이즈 전달해줘야함
+            var lettuceSize = 400; // 서버에서 상추 사이즈 전달해줘야함
 
             // 너비가 500픽셀을 초과할 경우 경고
             if (lettuceSize > 500) {

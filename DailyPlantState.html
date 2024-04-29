@@ -39,8 +39,14 @@
             text-align: left;
         }
         .footer {
+            position: fixed; /* footer를 화면 하단에 고정 */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
             text-align: center;
-            padding: 20px;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
         }
         .back-button {
             background-color: #4CAF50;
@@ -48,6 +54,7 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>

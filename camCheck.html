@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>스마트 상추 관리 시스템 - 이미지 확대</title>
+    <title>명지 키움 - 이미지 확대</title>
     <style>
         body, html {
             height: 100%;
@@ -31,8 +31,14 @@
             max-height: 100%;
         }
         .footer {
+            position: fixed; /* footer를 화면 하단에 고정 */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
             text-align: center;
-            padding: 10px 20px;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
         }
         .back-button {
             background-color: #4CAF50;
@@ -45,7 +51,7 @@
     </style>
 </head>
 <body>
-    <div class="header">스마트 상추 관리 시스템</div>
+    <div class="header">명지 키움</div>
     <div class="image-container">
         <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="확대된 상추 이미지">
     </div>

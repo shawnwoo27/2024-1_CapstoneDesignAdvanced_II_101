@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>스마트 상추 관리 시스템 - 일간 사진첩</title>
+    <title>명지 키움 - 일간 사진첩</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         body, html {
@@ -37,8 +37,14 @@
             height: auto;
         }
         .footer {
+            position: fixed; /* footer를 화면 하단에 고정 */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
             text-align: center;
-            padding: 20px;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
         }
         .back-button {
             background-color: #4CAF50;
@@ -46,16 +52,17 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>스마트 상추 관리 시스템 - 일간 사진첩</h1>
+        <h1>명지 키움 - 일간 사진첩</h1>
     </div>
     <div class="gallery">
         <!-- 아래 부분은 예시로, 실제로는 서버에서 날짜/이미지 데이터를 가져와야함. -->
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
+        <div class="date-block" onclick="window.location.href='DailyPlantState.html';">
             <h3>2023-04-01</h3>
             <img src="lettuce-2023-04-01.jpg" alt="상추 사진">
         </div>
