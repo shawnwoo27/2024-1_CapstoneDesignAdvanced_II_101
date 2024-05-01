@@ -20,33 +20,35 @@
             font-size: 20px;
         }
         .image-container {
-            flex-grow: 1;
+            width: 100vw; /* Viewport width */
+            height: 100vh; /* Viewport height */
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
         img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%; /* Make sure image covers at least the width */
+            height: 100%; /* Make sure image covers at least the height */
+            object-fit: contain; /* Maintain aspect ratio and maximize size without cropping */
+            min-width: 100%; /* Minimum width of image is 100% of viewport */
+            min-height: 100%; /* Minimum height of image is 100% of viewport */
         }
         .footer {
-            position: fixed; /* footer를 화면 하단에 고정 */
+            position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             background-color: #4CAF50;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
-        }
-        .back-button {
-            background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            text-align: center;
+            padding: 20px 0;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .footer:hover {
+            background-color: #3e8e41; /* 호버 시, 살짝 더 진한 초록색으로 변경 */
         }
     </style>
 </head>
@@ -55,8 +57,8 @@
     <div class="image-container">
         <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="확대된 상추 이미지">
     </div>
-    <div class="footer">
-        <button class="back-button" onclick="window.history.back();">원래 화면으로 돌아가기</button>
+    <div class="footer" onclick="window.location.href='/';">
+        원래 화면으로 돌아가기
     </div>
 </body>
 </html>

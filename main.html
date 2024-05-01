@@ -50,13 +50,21 @@
             padding: 10px 0;
             box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
         }
-        .photo-album-button {
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            text-align: center;
+            padding: 20px 0;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .footer:hover {
+            background-color: #3e8e41; /* 호버 시, 살짝 더 진한 초록색으로 변경 */
         }
     </style>
 </head>
@@ -67,7 +75,7 @@
     <div class="content">
         <div class="left">
             <!-- 상추 이미지를 여기에 표시 -->
-            <a href="camCheck.html  ">
+            <a href="/cam-check">
                 <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="상추 이미지" style="width:100%; height: auto;">
             </a>
         </div>
@@ -87,12 +95,11 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <!-- 일간 사진첩 페이지로 이동하는 버튼 -->
-        <button class="photo-album-button" onclick="window.location.href='DailyPhoto.html';">일간 사진첩</button>
+    <!-- 일간 사진첩 페이지로 이동하는 버튼 -->
+    <div class="footer" onclick="window.location.href='/daily-photo';">
+       일간 사진첩
     </div>
     <script>
-        // 이 부분에는 AJAX 호출이나 WebSocket 연결을 통해 데이터를 실시간으로 업데이트하는 코드를 추가할 수 있습니다.
         // '수확 알림' 창 구현 예시
         function checkLettuceSize() {
             var lettuceSize = 400; // 서버에서 상추 사이즈 전달해줘야함
@@ -102,8 +109,23 @@
                 alert('상추가 수확 크기에 도달했습니다! 수확을 고려하세요.');
             }
         }
-
+        //수확 알림 함수 실행
         checkLettuceSize();
+
+        //서버에서 온도,습도,조도,수위 데이터 받아오는 함수(AJAX 폴링)
+        function fetchData() {
+            fetch('/sensor_data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('temperature').textContent = data.temperature + '°C';
+                document.getElementById('light').textContent = data.light + ' lux';
+                document.getElementById('humidity').textContent = data.humidity + '%';
+                // document.getElementById('waterLevel').textContent = data.waterLevel + ' cm';
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+        // 1초마다 데이터 업데이트
+        setInterval(fetchData, 1000);
     </script>
 </body>
 </html>

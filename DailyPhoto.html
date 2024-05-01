@@ -30,29 +30,27 @@
             transition: transform 0.2s;
         }
         .date-block:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         img {
             width: 100%;
             height: auto;
         }
         .footer {
-            position: fixed; /* footer를 화면 하단에 고정 */
+            position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             background-color: #4CAF50;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* 하단에서 윗부분으로 그림자 추가 */
-        }
-        .back-button {
-            background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            text-align: center;
+            padding: 20px 0;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .footer:hover {
+            background-color: #3e8e41; /* 호버 시, 살짝 더 진한 초록색으로 변경 */
         }
     </style>
 </head>
@@ -62,7 +60,7 @@
     </div>
     <div class="gallery">
         <!-- 아래 부분은 예시로, 실제로는 서버에서 날짜/이미지 데이터를 가져와야함. -->
-        <div class="date-block" onclick="window.location.href='DailyPlantState.html';">
+        <div class="date-block" onclick="window.location.href='daily-plant-state';">
             <h3>2023-04-01</h3>
             <img src="lettuce-2023-04-01.jpg" alt="상추 사진">
         </div>
@@ -127,8 +125,8 @@
             <img src="lettuce-2023-04-16.jpg" alt="상추 사진">
         </div>
     </div>
-    <div class="footer">
-        <button class="back-button" onclick="window.history.back();">뒤로 가기</button>
+    <div class="footer" onclick="window.history.back();">
+        뒤로 가기
     </div>
 </body>
 </html>
