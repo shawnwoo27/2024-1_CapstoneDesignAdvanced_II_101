@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, render_template
 import smbus2
 import time
@@ -41,7 +42,7 @@ def daily_photo():
 @app.route('/daily-plant-state')
 def daily_plant_state():
     return render_template('DailyPlantState.html')
-    
+
 @app.route('/sensor_data')
 def sensor_data():
     try:
