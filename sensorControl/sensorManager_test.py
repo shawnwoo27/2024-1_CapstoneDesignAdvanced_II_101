@@ -17,12 +17,8 @@ import adafruit_dht
 # csv 파일 처리용
 import csv
 
-# 주기적 작업 수행을 돕는 스케줄러 라이브러리
-import sched
-
 # 병렬적인 작업을 위한 스레드 라이브러리
 import threading
-
 
 app = Flask(__name__)
 
@@ -72,25 +68,34 @@ def write_to_csv(datetime_str, temperature, light, humidity):
         writer.writerow([datetime_str, temperature, light, humidity])
 
 
-# 스케줄러를 사용하여 일정 시간마다 센서 데이터를 저장하는 함수
-def save_sensor_data_to_csv(sc):
-     # 현재 시간 확인
-    now = datetime.now()
-    minute = now.minute
+# 센서 데이터를 주기적으로 읽어서 CSV 파일에 저장하는 스레드 동작 함수
+def save_sensor_data_to_csv():
+    while True:
+        try:
+            # 현재 시간 확인
+            now = datetime.now()
+            minute = now.minute
 
-    # 매 정시와 매 정시 30분에만 데이터 저장
-    if minute == 0 or minute == 30:
-        temperature, light, humidity = sensor_data_process()
+            # 매 정시와 매 정시 30분에만 데이터 저장
+            if minute == 0 or minute == 30:
+                temperature, light, humidity = sensor_data_process()
 
-        if temperature is not None and light is not None and humidity is not None:
-            current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            write_to_csv(current_time, temperature, light, humidity)
-            print("Data added to CSV at:", current_time)
-    else:
-        print("Data save skipped", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+                if temperature is not None and light is not None and humidity is not None:
+                    # 현재 시간 문자열 반환
+                    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    # csv 파일에 데이터 추가
+                    write_to_csv(current_time, temperature, light, humidity)
+                    print("Data added to CSV at: " + f'일시-{current_time}, 온도-{temperature:.1f}°C, 조도-{light:.1f} lux, 습도-{humidity}%')
+                else:
+                    print("Failed to receive data from sensor")
+            else:
+                print("Data save skipped", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            
+            # 1분마다 작업 수행
+            time.sleep(60)
 
-    # 1분 후에 다음 작업을 실행
-    sc.enter(60, 1, save_sensor_data_to_csv, (sc,))
+        except Exception as e:
+            print("An error occurred:", e)
 
 
 # 라우팅 설정
@@ -127,13 +132,9 @@ def sensor_data_route():
 
 
 if __name__ == '__main__':
-    # 스케줄러를 별도의 스레드에서 실행
-    sensor_data_sc = sched.scheduler(time.time, time.sleep)
-    t_for_sensor_data_sc = threading.Thread(target=sensor_data_sc.run)
-    t_for_sensor_data_sc.start()
-
-    # 스케줄러 초기화 및 데이터를 저장하는 함수 실행
-    sensor_data_sc.enter(0, 1, save_sensor_data_to_csv, (sensor_data_sc,))
+    # 스레드 생성 및 시작
+    sensor_data_thread = threading.Thread(target=save_sensor_data_to_csv)
+    sensor_data_thread.start()
 
     # 디버그 모드 False, 0.0.0.0 모든 사용자로부터, 서버 여는 포트 8080
     app.run(debug=False, host='0.0.0.0', port=8080)
