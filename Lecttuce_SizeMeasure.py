@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # 이미지 읽기
-image_path = 'lettuce0514.jpg'  # 상추 이미지 경로
+image_path = 'lecttuce0514.jpg'  # 상추 이미지 경로
 image = cv2.imread(image_path)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
