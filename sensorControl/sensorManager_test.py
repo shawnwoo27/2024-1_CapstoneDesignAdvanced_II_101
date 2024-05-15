@@ -6,7 +6,7 @@ import smbus2
 
 # 시간 관련 python 내장 라이브러리
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # GPIO 핀 번호 확인용 라이브러리
 import board
@@ -16,6 +16,7 @@ import adafruit_dht
 
 # csv 파일 처리용
 import csv
+from collections import defaultdict
 
 # 병렬적인 작업을 위한 스레드 라이브러리
 import threading
@@ -67,6 +68,25 @@ def write_to_csv(datetime_str, temperature, light, humidity):
         writer = csv.writer(file)
         writer.writerow([datetime_str, temperature, light, humidity])
 
+# CSV 파일 읽기
+def read_csv(file_path):
+    data = defaultdict(list)
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            date_time = datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S')
+            date_str = date_time.strftime('%Y-%m-%d')
+            temperature = row[1]
+            light = row[2]
+            humidity = row[3]
+            data[date_str].append({
+                'time': date_time.strftime('%H:%M:%S'),
+                'temperature': temperature,
+                'light': light,
+                'humidity': humidity
+            })
+    return data
+
 
 # 센서 데이터를 주기적으로 읽어서 CSV 파일에 저장하는 스레드 동작 함수
 def save_sensor_data_to_csv():
@@ -98,6 +118,9 @@ def save_sensor_data_to_csv():
             print("An error occurred:", e)
 
 
+# 데이터 읽기 -> 추후 해당 위치 조정 필요.
+data = read_csv(CSV_FILE_PATH)
+
 # 라우팅 설정
 @app.route('/')
 def main():
@@ -109,11 +132,17 @@ def cam_check():
 
 @app.route('/daily-photo')
 def daily_photo():
-    return render_template('DailyPhoto.html')
+    dates = list(data.keys())
 
-@app.route('/daily-plant-state')
-def daily_plant_state():
-    return render_template('DailyPlantState.html')
+    return render_template('DailyPhoto.html', dates=dates)
+
+@app.route('/daily-photo/<date>')
+def date_page(date):
+    if date in data:
+        daily_data = data[date]
+    else:
+        daily_data = []
+    return render_template('DailyPlantState.html', date=date, daily_data=daily_data)
 
 
 # 센서 데이터 처리 라우팅

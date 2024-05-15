@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2023-04-01 식물 상태</title>
+    <title>{{ date }} 식물 상태</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         body, html {
@@ -59,7 +59,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>2023-04-01 식물 상태</h1>
+        <h1>{{ date }} 식물 상태</h1>
     </div>
     <div class="content">
         <div class="left">
@@ -73,124 +73,20 @@
                         <th>온도</th>
                         <th>조도</th>
                         <th>습도</th>
-                        <th>수위</th>
+                        <!--<th>수위</th>-->
                     </tr>
                 </thead>
                 
                 <tbody>
+                    {% for data in daily_data %}
+                        <tr>
+                            <td>{{ data.time }}</td>
+                            <td>{{ data.temperature }}</td>
+                            <td>{{ data.light }}</td>
+                            <td>{{ data.humidity }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
-                <tr>
-                    <td>2023-04-01 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-02 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-03 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-04 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-05 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-06 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-07 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-08 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-09 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-10 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-11 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-12 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-13 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-14 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-15 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
-                <tr>
-                    <td>2023-04-16 08:00</td>
-                    <td>24°C</td>
-                    <td>1200 lux</td>
-                    <td>65%</td>
-                    <td>28 cm</td>
-                </tr>
                 <!-- 여기에 더 많은 데이터 행을 추가 가능 -->
             </table>
         </div>

@@ -59,71 +59,12 @@
         <h1>명지 키움 - 일간 사진첩</h1>
     </div>
     <div class="gallery">
-        <!-- 아래 부분은 예시로, 실제로는 서버에서 날짜/이미지 데이터를 가져와야함. -->
-        <div class="date-block" onclick="window.location.href='daily-plant-state';">
-            <h3>2023-04-01</h3>
-            <img src="lettuce-2023-04-01.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-02</h3>
-            <img src="lettuce-2023-04-02.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-03</h3>
-            <img src="lettuce-2023-04-03.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-04</h3>
-            <img src="lettuce-2023-04-04.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-05</h3>
-            <img src="lettuce-2023-04-05.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-06</h3>
-            <img src="lettuce-2023-04-06.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-07</h3>
-            <img src="lettuce-2023-04-07.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-08</h3>
-            <img src="lettuce-2023-04-08.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-09</h3>
-            <img src="lettuce-2023-04-09.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-10</h3>
-            <img src="lettuce-2023-04-10.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-11</h3>
-            <img src="lettuce-2023-04-11.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-12</h3>
-            <img src="lettuce-2023-04-12.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-13</h3>
-            <img src="lettuce-2023-04-13.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-14</h3>
-            <img src="lettuce-2023-04-14.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-15</h3>
-            <img src="lettuce-2023-04-15.jpg" alt="상추 사진">
-        </div>
-        <div class="date-block" onclick="window.location.href='specific-date-page.html';">
-            <h3>2023-04-16</h3>
-            <img src="lettuce-2023-04-16.jpg" alt="상추 사진">
-        </div>
+        {% for date in dates %}
+        <div class="date-block" onclick="window.location.href='{{ url_for('date_page', date=date) }}';">
+                <h3>{{ date }}</h3>
+                <img src="lettuce-2023-04-01.jpg" alt="상추 사진">
+            </div>
+        {% endfor %}
     </div>
     <div class="footer" onclick="window.history.back();">
         뒤로 가기
