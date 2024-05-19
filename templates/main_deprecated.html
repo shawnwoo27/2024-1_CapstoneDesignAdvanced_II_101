@@ -66,18 +66,6 @@
         .footer:hover {
             background-color: #3e8e41; /* 호버 시, 살짝 더 진한 초록색으로 변경 */
         }
-        .status {
-            font-weight: bold;
-        }
-        .good {
-            color: green;
-        }
-        .moderate {
-            color: orange;
-        }
-        .bad {
-            color: red;
-        }
     </style>
 </head>
 <body>
@@ -94,19 +82,16 @@
         <div class="right">
             <h2>실시간 상추 상태 정보</h2>
             <div class="data-field">
-                <strong>온도:</strong> <span id="temperature">24°C</span>
-                <span class="status" id="temp-status"></span>
+                <strong>온도:</strong> <span id="temperature">??°C</span>
             </div>
             <div class="data-field">
-                <strong>조도:</strong> <span id="light">1500 lux</span>
-                <span class="status" id="light-status"></span>
+                <strong>조도:</strong> <span id="light">??? lux</span>
             </div>
             <div class="data-field">
-                <strong>습도:</strong> <span id="humidity">60%</span>
-                <span class="status" id="humidity-status"></span>
+                <strong>습도:</strong> <span id="humidity">??%</span>
             </div>
             <div class="data-field">
-                <strong>수위:</strong> <span id="waterLevel">30 cm</span>
+                <strong>수위:</strong> <span id="waterLevel">?? cm</span>
             </div>
         </div>
     </div>
@@ -132,36 +117,13 @@
             fetch('/sensor_data')
             .then(response => response.json())
             .then(data => {
-                updateStatus(data);
+                document.getElementById('temperature').textContent = data.temperature + '°C';
+                document.getElementById('light').textContent = data.light + ' lux';
+                document.getElementById('humidity').textContent = data.humidity + '%';
+                // document.getElementById('waterLevel').textContent = data.waterLevel + ' cm';
             })
             .catch(error => console.error('Error fetching data:', error));
         }
-
-        function updateStatus(data) {
-            document.getElementById('temperature').textContent = data.temperature + '°C';
-            document.getElementById('light').textContent = data.light + ' lux';
-            document.getElementById('humidity').textContent = data.humidity + '%';
-            // document.getElementById('waterLevel').textContent = data.waterLevel + ' cm';
-
-            updateCondition(data.temperature, 18, 22, 15, 24, 'temp-status');
-            updateCondition(data.light, 15000, 25000, 10000, 30000, 'light-status');
-            updateCondition(data.humidity, 50, 60, 40, 70, 'humidity-status');
-        }
-
-        function updateCondition(value, idealMin, idealMax, min, max, elementId) {
-            var statusElement = document.getElementById(elementId);
-            if (value >= idealMin && value <= idealMax) {
-                statusElement.textContent = '좋아요';
-                statusElement.className = 'status good';
-            } else if (value >= min && value <= max) {
-                statusElement.textContent = '적당해요';
-                statusElement.className = 'status moderate';
-            } else {
-                statusElement.textContent = '나빠요';
-                statusElement.className = 'status bad';
-            }
-        }
-
         // 1초마다 데이터 업데이트
         setInterval(fetchData, 1000);
     </script>
