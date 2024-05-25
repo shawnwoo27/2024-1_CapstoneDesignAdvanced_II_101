@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>명지 키움</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css"> -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="mjc_logo.jpg" alt="명지전문대학 로고" class="logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">소개</a>
+            <a href="/contact">일간사진첩</a>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="left">
+            <a href="/cam-check">
+                <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="상추 이미지">
+            </a>
+        </div>
+        <div class="right">
+            <div class="status-header">
+                <h2>실시간 상추 상태 정보</h2>
+            </div>
+            <div class="status-content">
+                <div class="data-field">
+                    <strong>온도:</strong> <span id="temperature">24°C</span>
+                    <span class="status" id="temp-status"></span>
+                </div>
+                <div class="data-field">
+                    <strong>조도:</strong> <span id="light">1500 lux</span>
+                    <span class="status" id="light-status"></span>
+                </div>
+                <div class="data-field">
+                    <strong>습도:</strong> <span id="humidity">60%</span>
+                    <span class="status" id="humidity-status"></span>
+                </div>
+                <div class="data-field">
+                    <strong>수위:</strong> <span id="waterLevel">30 cm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

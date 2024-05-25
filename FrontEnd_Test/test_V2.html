@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>명지 키움</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-gauge@0.1.7/dist/chartjs-gauge.min.js"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Tossface', 'Spoqa Han Sans Neo', 'Arial', sans-serif;
+            background-color: #f5f5f5; /* 눈이 편안한 흰색 */
+            color: #333;
+        }
+        .header {
+            background-color: #ffffff;
+            color: #005bac;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .header:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .logo {
+            width: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            padding: 20px;
+            gap: 20px; /* 요소 간의 간격을 일정하게 유지 */
+        }
+        .left, .right {
+            flex: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden; /* 자식 요소의 테두리가 부모 요소의 경계에 맞게 잘리도록 함 */
+            display: flex;
+            flex-direction: column; /* 자식 요소들을 수직으로 정렬 */
+            transition: all 0.3s ease;
+        }
+        .left:hover, .right:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .left img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px; /* 이미지의 테두리를 둥글게 */
+            flex: 1; /* 이미지를 박스의 나머지 공간을 채우도록 설정 */
+        }
+        .right {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+        .right h2 {
+            grid-column: span 2;
+            color: #005bac;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            font-family: 'Tossface', 'Spoqa Han Sans Neo', 'Arial', sans-serif; /* 폰트 설정 */
+        }
+        .gauge-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+        .footer {
+            background-color: #ffffff;
+            color: #005bac;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            font-family: 'Tossface', 'Spoqa Han Sans Neo', 'Arial', sans-serif; /* 폰트 설정 */
+        }
+        .footer:hover {
+            background-color: #e6e6e6;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+        }
+        @media screen and (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .right {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+                border-radius: 0 0 10px 10px;
+            }
+            .footer {
+                position: relative;
+                bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/path/to/logo.png" alt="명지전문대학 로고" class="logo">
+        명지 키움
+    </div>
+    <div class="content">
+        <div class="left">
+            <a href="/cam-check">
+                <img src="https://cdn.kcjlogos.org/news/photo/202009/15423_4388_816.jpg" alt="상추 이미지">
+            </a>
+        </div>
+        <div class="right">
+            <h2>실시간 상추 상태 정보</h2>
+            <div class="gauge-container">
+                <canvas id="temperatureGauge"></canvas>
+            </div>
+            <div class="gauge-container">
+                <canvas id="lightGauge"></canvas>
+            </div>
+            <div class="gauge-container">
+                <canvas id="humidityGauge"></canvas>
+            </div>
+            <div class="gauge-container">
+                <canvas id="waterLevelGauge"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="footer" onclick="window.location.href='/daily-photo';">
+        일간 사진첩
+    </div>
+    <script>
+        function checkLettuceSize() {
+            var lettuceSize = 400;
+
+            if (lettuceSize > 500) {
+                alert('상추가 수확 크기에 도달했습니다! 수확을 고려하세요.');
+            }
+        }
+        checkLettuceSize();
+
+        // Chart.js와 게이지 플러그인을 등록
+        Chart.register(ChartjsGauge.GaugeController, ChartjsGauge.ArcElement);
+
+        function createGauge(elementId, minValue, maxValue, thresholds, unit) {
+            const ctx = document.getElementById(elementId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'gauge',
+                data: {
+                    datasets: [{
+                        value: 0,
+                        minValue: minValue,
+                        maxValue: maxValue,
+                        backgroundColor: getColorRange(thresholds),
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    needle: {
+                        radiusPercentage: 2,
+                        widthPercentage: 3.2,
+                        lengthPercentage: 80,
+                        color: 'rgba(0, 0, 0, 1)'
+                    },
+                    valueLabel: {
+                        display: true,
+                        formatter: (value) => {
+                            return value + unit;
+                        }
+                    },
+                    plugins: {
+                        datalabels: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function getColorRange(thresholds) {
+            const { good, moderate, bad } = thresholds;
+            return ['green', 'yellow', 'red'];
+        }
+
+        const temperatureGauge = createGauge('temperatureGauge', 0, 50, { good: [15, 25], moderate: [10, 30], bad: [0, 50] }, '°C');
+        const lightGauge = createGauge('lightGauge', 0, 5000, { good: [1000, 3000], moderate: [500, 4000], bad: [0, 5000] }, ' lux');
+        const humidityGauge = createGauge('humidityGauge', 0, 100, { good: [40, 60], moderate: [30, 70], bad: [0, 100] }, '%');
+        const waterLevelGauge = createGauge('waterLevelGauge', 0, 100, { good: [20, 50], moderate: [10, 60], bad: [0, 100] }, ' cm');
+
+        function fetchData() {
+            const data = {
+                temperature: Math.floor(Math.random() * 51), // 0-50 랜덤 값
+                light: Math.floor(Math.random() * 5001), // 0-5000 랜덤 값
+                humidity: Math.floor(Math.random() * 101), // 0-100 랜덤 값
+                waterLevel: Math.floor(Math.random() * 101) // 0-100 랜덤 값
+            };
+            updateGauges(data);
+        }
+
+        function updateGauges(data) {
+            temperatureGauge.data.datasets[0].value = data.temperature;
+            temperatureGauge.update();
+
+            lightGauge.data.datasets[0].value = data.light;
+            lightGauge.update();
+
+            humidityGauge.data.datasets[0].value = data.humidity;
+            humidityGauge.update();
+
+            waterLevelGauge.data.datasets[0].value = data.waterLevel;
+            waterLevelGauge.update();
+        }
+
+        // 1초마다 데이터 업데이트
+        setInterval(fetchData, 1000);
+    </script>
+</body>
+</html>
