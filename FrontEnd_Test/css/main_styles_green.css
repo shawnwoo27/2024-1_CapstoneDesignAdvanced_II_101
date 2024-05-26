@@ -7,8 +7,8 @@ body, html {
 }
 
 .header {
-    background-color: #ffffff;
-    color: #003366; /* 명지전문대 로고 색 */
+    background-color: rgb(193, 255, 193);
+    color: #228B22; /* 짙은 녹색*/
     text-align: left;
     padding: 20px;
     font-size: 24px;
@@ -39,7 +39,7 @@ body, html {
 .header nav a {
     margin-left: 20px;
     text-decoration: none;
-    color: rgb(52, 223, 52); /*#003366; 명지전문대 로고 색 */
+    color: #228B22; /* 짙은 녹색*/
     font-size: 18px;
     padding: 10px 15px; /* padding을 추가하여 가상 버튼 형태를 만듦 */
     border-radius: 5px; /* 약간의 곡선으로 버튼 느낌 추가 */
@@ -66,7 +66,7 @@ body, html {
 
 .left, .right {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: rgb(193, 255, 193);;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -107,7 +107,7 @@ body, html {
 }
 
 .status-header h2 {
-    color: #003366; /* 명지전문대 로고 색 */
+    color: #228B22; /* 짙은 녹색*/
     margin-bottom: 20px;
     text-align: center;
     font-weight: 500;
@@ -126,7 +126,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgb(52, 223, 52); /*#003366; /* 명지전문대 로고 색 */
+    color: #228B22; /* 짙은 녹색*/
 }
 
 .data-field:hover {
@@ -134,7 +134,7 @@ body, html {
 }
 
 .data-field span {
-    color: rgb(63, 67, 69)/*rgb(2, 138, 226); /* 명지전문대 로고의 밝은 파란색 잎사귀 색 */
+    color: #2F4F4F;
 }
 
 .status {
