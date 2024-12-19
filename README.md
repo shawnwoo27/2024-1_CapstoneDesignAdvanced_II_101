@@ -43,7 +43,7 @@
 ![명지키움_PC대표](https://github.com/user-attachments/assets/302b85fb-8768-4f4e-b947-c6105669b264)
 ![명지키움_대표화면_편집](https://github.com/user-attachments/assets/d64c6b0e-c139-45f8-9bfe-ad31cc4310ab)
 1. 식물의 실시간 상태를 확인할 수 있는 화면 제공. 해당 화면을 클릭하면, '2. 캠 확인'으로 이동할 수 있다.
-2. 식물의 실사간 온도/조도/습도/수위를 측정해, 적정 수치인지 표기해준다.
+2. 식물의 실시간 온도/조도/습도/수위를 측정해, 적정 수치인지 표기해준다. 각 항목을 클릭 시 그래프에 형태로 보여준다.
 3. 매일 매일 식물의 사진을 찍고 저장해놓은 '3. 일간 사진첩'으로 이동할 수 있다.
 
 #### 2. 캠 확인
@@ -58,3 +58,16 @@
 #### 4. 일시별 식물 상태
 식물의 상태를 일정 시간을 간격으로 기록해 놓은 화면. 아래 예시 화면은 '3. 일간 사진첩'에서 '2024-06-13'을 클릭해 도달할 수 있다.
 <img width="960" alt="7  일간상태표" src="https://github.com/user-attachments/assets/f3f49342-aa29-451f-a7f5-0b0ef64b8a52" />
+
+
+## 모바일 화면 대응
+반응형으로 설계하여 모바일 환경에서의 UI를 갖추도록 하였다.
+![KakaoTalk_20241219_192134182](https://github.com/user-attachments/assets/c6472f89-910e-499e-91ab-408e5e1f2099)
+![KakaoTalk_20241219_192134182_01](https://github.com/user-attachments/assets/cf5bc06c-2c82-41f2-873f-5ba6d702a348)
+![KakaoTalk_20241219_192134182_02](https://github.com/user-attachments/assets/cbc00ebe-3b3e-47ac-aa77-527de752a6a4)
+![KakaoTalk_20241219_192134182_03](https://github.com/user-attachments/assets/cb6f282a-565c-4a12-aa4b-bb3bec6ec714)
+![KakaoTalk_20241219_192134182_04](https://github.com/user-attachments/assets/da5eba31-5ab2-4284-9dbd-b3680984a638)
+
+## 프로젝트 실제 동작 영상
+https://www.youtube.com/watch?v=PekRT0CupS4&ab_channel=%EC%9A%B0%EA%B0%80%EB%86%88
+
