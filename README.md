@@ -27,6 +27,21 @@
 + 포트 포워딩: 라우터 설정을 통해 외부에서 Flask 서버 접근을 가능하게 함.
 + 도메인: DDNS (Dynamic DNS) 설정으로 외부 접속 가능.
 
-## 시스템 아키텍쳐
+## 시스템 아키텍쳐 다이어그램
 ![파이팀_캡디경진대회_전체설계 drawio](https://github.com/user-attachments/assets/97ac5a0f-84ff-4e29-9e43-e6409652f038)
+
+## 하드웨어 구성 및 배선도
 ![RPI5_Architect](https://github.com/user-attachments/assets/e7356e29-da30-4520-84c1-75ed9462f67e)
+
+## 페이지별 기능 설명
+#### 1. 메인 페이지
+접속시, 처음 보게되는 웹 사이트의 메인 페이지
+![명지키움_PC대표](https://github.com/user-attachments/assets/302b85fb-8768-4f4e-b947-c6105669b264)
+![명지키움_대표화면_편집](https://github.com/user-attachments/assets/d64c6b0e-c139-45f8-9bfe-ad31cc4310ab)
+1. 식물의 실시간 상태를 확인할 수 있는 화면 제공. 해당 화면을 클릭하면, '2. 캠 확인'으로 이동할 수 있다.
+2. 식물의 실사간 온도/조도/습도/수위를 측정해, 적정 수치인지 표기해준다.
+3. 매일 매일 식물의 사진을 찍고 저장해놓은 '3. 일간 사진첩'으로 이동할 수 있다.
+
+#### 2. 캠 확인
+#### 3. 일간 사진첩
+#### 4. 일시별 식물 상태
