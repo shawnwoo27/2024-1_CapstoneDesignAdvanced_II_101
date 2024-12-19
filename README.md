@@ -19,4 +19,11 @@
   + Chart.js:데이터 시각화.
   + smbus: 시스템 레벨의 I2C 통신 기능
   + adafruit-circuitpython-dht: 온습도 센서용 라이브러리
++ 데이터베이스: MariaDB
++ 프론트엔드: HTML5/ CSS3/ JS
+
+#### 3. 배포 환경
++ 서버: Raspberry Pi 5 자체를 로컬 서버로 활용.
++ 포트 포워딩: 라우터 설정을 통해 외부에서 Flask 서버 접근을 가능하게 함.
++ 도메인: DDNS (Dynamic DNS) 설정으로 외부 접속 가능.
  
