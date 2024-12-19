@@ -26,4 +26,7 @@
 + 서버: Raspberry Pi 5 자체를 로컬 서버로 활용.
 + 포트 포워딩: 라우터 설정을 통해 외부에서 Flask 서버 접근을 가능하게 함.
 + 도메인: DDNS (Dynamic DNS) 설정으로 외부 접속 가능.
- 
+
+## 시스템 아키텍쳐
+![파이팀_캡디경진대회_전체설계 drawio](https://github.com/user-attachments/assets/97ac5a0f-84ff-4e29-9e43-e6409652f038)
+![RPI5_Architect](https://github.com/user-attachments/assets/e7356e29-da30-4520-84c1-75ed9462f67e)
