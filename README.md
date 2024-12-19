@@ -56,5 +56,5 @@
 <img width="960" alt="6  앨범" src="https://github.com/user-attachments/assets/c16e61cf-0623-4c24-8eb6-a3191fd9a5b1" />
 
 #### 4. 일시별 식물 상태
-식물의 상태를 일정 시간을 간격으로 기록해 놓은 화면. 아래 예시 화면은 '3. 일간 사진첩'에서 '2024-04-08'을 클릭해 도달할 수 있다.
+식물의 상태를 일정 시간을 간격으로 기록해 놓은 화면. 아래 예시 화면은 '3. 일간 사진첩'에서 '2024-06-13'을 클릭해 도달할 수 있다.
 <img width="960" alt="7  일간상태표" src="https://github.com/user-attachments/assets/f3f49342-aa29-451f-a7f5-0b0ef64b8a52" />
