@@ -63,7 +63,6 @@
 ## 모바일 화면 대응
 반응형으로 설계하여 모바일 환경에서의 UI를 갖추도록 하였다.
 ![KakaoTalk_20241219_192134182](https://github.com/user-attachments/assets/c6472f89-910e-499e-91ab-408e5e1f2099)
-![KakaoTalk_20241219_192134182_01](https://github.com/user-attachments/assets/cf5bc06c-2c82-41f2-873f-5ba6d702a348)
 ![KakaoTalk_20241219_192134182_02](https://github.com/user-attachments/assets/cbc00ebe-3b3e-47ac-aa77-527de752a6a4)
 ![KakaoTalk_20241219_192134182_03](https://github.com/user-attachments/assets/cb6f282a-565c-4a12-aa4b-bb3bec6ec714)
 ![KakaoTalk_20241219_192134182_04](https://github.com/user-attachments/assets/da5eba31-5ab2-4284-9dbd-b3680984a638)
